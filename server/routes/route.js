@@ -8,4 +8,5 @@ router.post("/postLoginData", MongoController.postLoginData);
 router.get("/loadCoaches", MongoController.loadCoaches);
 router.get("/loadCoachesProfile", MongoController.loadCoachesProfile);
 router.get("/loadCoachwithEmail", MongoController.loadCoachwithEmail);
+router.get("/deleteTrainer", MongoController.deleteCoach);
 module.exports = router;

@@ -73,6 +73,14 @@ const loadCoaches = async () => {
     .catch((err) => err.response);
 };
 
+const deleteTrainer = async (data) => {
+  let url = `${baseUrl}/deleteTrainer`;
+  return await axios
+    .post(url, data)
+    .then((response) => response)
+    .catch((err) => err.response);
+};
+
 const test = async () => {
   let url = `${baseUrl}/test`;
   return await axios
@@ -91,4 +99,5 @@ export {
   loadCoachesProfile,
   postLoginData,
   VerifyLogin,
+  deleteTrainer,
 };

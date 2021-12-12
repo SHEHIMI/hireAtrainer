@@ -157,14 +157,14 @@ const createCoach = async (client, newCoach) => {
   return `new coach was created with the following id: ${result.insertedId}`;
 };
 
-const deleteCoach = async () => {
+exports.deleteCoach = async (req, res) => {
+  let coach = req.body.coach;
   const client = new MongoClient(uri);
   await client.connect();
   const del = await client.db("hirePT");
-  del.collection("coaches").deleteOne({}, function (err, obj) {
+  del.collection("coaches").deleteOne({ coach }, function (err, obj) {
     if (err) throw err;
     console.log("1 coach deleted");
-
     client.close();
   });
 };
