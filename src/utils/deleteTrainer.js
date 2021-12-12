@@ -1,16 +1,29 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import usersActions from "../redux/actions/action";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router";
 
 const Delete = () => {
-  //const counter = useSelector((state) => state.counter);
-   
+  //const Email = useSelector((state) => state.Email);
+  let history = useHistory();
   const dispatch = useDispatch();
-  //usersActions.deleteUser();
+  let coachEmail = localStorage.getItem("email");
+  const deleteClicked = () => {
+    dispatch(usersActions.DeleteUser(coachEmail));
+  };
+  const Exit = () => {
+    deleteClicked();
+    history.push("/SignUp");
+  };
   return (
     <div>
-      <h1>Counter</h1>
+      <p className="text-center" style={{ color: "red" }}>
+        Are you sure you want to delete your account ?{coachEmail}
+      </p>
+      <button className="btn btn-danger btn-md" onClick={Exit}>
+        DELETE ACCOUNT{" "}
+      </button>
     </div>
   );
 };

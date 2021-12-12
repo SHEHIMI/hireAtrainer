@@ -158,15 +158,26 @@ const createCoach = async (client, newCoach) => {
 };
 
 exports.deleteCoach = async (req, res) => {
-  let coach = req.body.coach;
   const client = new MongoClient(uri);
-  await client.connect();
-  const del = await client.db("hirePT");
-  del.collection("coaches").deleteOne({ coach }, function (err, obj) {
-    if (err) throw err;
-    console.log("1 coach deleted");
-    client.close();
-  });
+  try {
+    await client.connect();
+    let coachEmail = req.body.data;
+    let target = { email: coachEmail };
+
+    await deleteT(client, target);
+    res.send({ message: "success" });
+  } catch (error) {
+    console.log(error);
+  } finally {
+    await client.close();
+  }
+};
+
+const deleteT = async (Client, target) => {
+  console.log(target);
+  const del = await Client.db("hirePT").collection("coaches").deleteOne(target);
+
+  return `new coach was created with the following id: ${del.deletedID}`;
 };
 
 //seedCoachData();

@@ -1,26 +1,23 @@
+import { deleteTrainer } from "../../api/api";
 export const DELETE_USERS_SUCCESS = "DELETE_USERS_SUCCESS";
-export const DELETE_USERS_STARTED = "DELETE_USERS_STARTED";
-export const DELETE_USERS_ERROR = "DELETE_USERS_ERROR";
 
 const usersActions = {
-  deleteUser: (userID) => async (dispatch) => {
+  DeleteUser: (coachEmail) => async (dispatch) => {
+    let data = {
+      data: coachEmail,
+    };
+    await deleteTrainer(data);
     try {
-      dispatch({
-        type: DELETE_USERS_STARTED,
-      });
-      // await deleteUser(userID);
       dispatch({
         type: DELETE_USERS_SUCCESS,
         payload: {
-          message: "deleted successfully",
+          data: coachEmail,
         },
       });
+      alert("success");
     } catch (err) {
-      dispatch({
-        type: DELETE_USERS_ERROR,
-      });
+      console.log(err);
     }
   },
 };
-
 export default usersActions;

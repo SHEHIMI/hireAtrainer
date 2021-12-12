@@ -1,4 +1,5 @@
 import { React, useEffect, useState } from "react";
+import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import dumbellico from "../images/dumbelico.png";
@@ -9,7 +10,7 @@ const Profile = () => {
   const [firstname, setfirstname] = useState("");
   const [lastname, setlastname] = useState("");
   const [phone, setphone] = useState(0);
-
+  let history = useHistory();
   var Email = localStorage.getItem("email");
   useEffect(() => {
     getData();
@@ -37,6 +38,10 @@ const Profile = () => {
     setfirstname(DataArray[1]);
     setlastname(DataArray[2]);
     setphone(DataArray[4]);
+  };
+
+  const delUser = () => {
+    history.push("/deleteTrainer");
   };
 
   return (
@@ -141,6 +146,9 @@ const Profile = () => {
                 <hr></hr>
               </div>
             </div>
+            <button className="btn btn-danger btn-md" onClick={delUser}>
+              DELETE ACCOUNT
+            </button>
           </div>
         </div>
       </div>

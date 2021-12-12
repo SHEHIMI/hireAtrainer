@@ -14,11 +14,12 @@ import HomeCLient from "./pages/HomeClient";
 import MusicClient from "./pages/MusicClient";
 import TrainerClient from "./pages/TrainersClient";
 import Delete from "./utils/deleteTrainer";
-import store from "./redux/store/store";
+import { configureStore } from "./redux/store/store";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 
 function App() {
+  const store = configureStore();
   return (
     <div className="App">
       <Provider store={store}>

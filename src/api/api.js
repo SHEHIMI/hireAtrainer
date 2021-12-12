@@ -75,6 +75,7 @@ const loadCoaches = async () => {
 
 const deleteTrainer = async (data) => {
   let url = `${baseUrl}/deleteTrainer`;
+  console.log("EMAIL:" + data);
   return await axios
     .post(url, data)
     .then((response) => response)
