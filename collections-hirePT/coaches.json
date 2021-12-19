@@ -1,0 +1,25 @@
+[{
+  "_id": "cak@gmail.com",
+  "firstname": "charbel",
+  "lastname": "abou khattar",
+  "password": "3939cak",
+  "phone": "81765432",
+  "email": "cak@gmail.com",
+  "certification": "FIBB pro 1999-today"
+},{
+  "_id": "jsnow@gmail.com",
+  "firstname": "jon",
+  "lastname": "snow",
+  "password": "jjs",
+  "phone": "03456785",
+  "email": "jsnow@gmail.com",
+  "certification": "NASM PT "
+},{
+  "_id": "psmith@yahoo.com",
+  "firstname": "paul",
+  "lastname": "smith",
+  "password": "SMITH",
+  "phone": "81600482",
+  "email": "psmith@yahoo.com",
+  "certification": "Mr olympia 2020"
+}]
