@@ -12,6 +12,8 @@ exports.seedCoachDataSignUp = async (req, res) => {
       password: req.body.password,
       phone: req.body.phone,
       email: req.body.email,
+      _id: req.body.email,
+      certification: "",
     };
 
     await createCoach(client, coach);
@@ -24,26 +26,6 @@ exports.seedCoachDataSignUp = async (req, res) => {
     await client.close();
   }
 };
-
-// const verify = async (email) => {
-//   const client = new MongoClient(uri);
-//   let query = { email: email };
-//   await client.connect();
-
-//   const FindEmail = await client
-//     .db("hirePT")
-//     .collection("coaches")
-//     .find(query)
-//     //.toString();
-
-//     console.log(FindEmail);
-//   // if (FindEmail.email == null) {
-//   //   return true;
-//   // } else {
-//   //   return false;
-//   // }
-
-// };
 
 exports.loadCoaches = async (req, res) => {
   const client = new MongoClient(uri);
@@ -175,10 +157,43 @@ exports.deleteCoach = async (req, res) => {
 
 const deleteT = async (Client, target) => {
   console.log(target);
+
   const del = await Client.db("hirePT").collection("coaches").deleteOne(target);
 
   return `new coach was created with the following id: ${del.deletedID}`;
 };
 
+exports.insertCertification = async (req, res) => {
+  let data = req.body.email;
+  let cert = req.body.cert;
+
+  let target = { email: data };
+
+  var newvalue = { $set: { certification: cert } };
+  const client = new MongoClient(uri);
+  await client.connect();
+  const result = await client
+    .db("hirePT")
+    .collection("coaches")
+    .updateOne(target, newvalue);
+  return `new certification was added: ${result.insertedId}`;
+};
+
+exports.retrieveData = async (req, res) => {
+  const client = new MongoClient(uri);
+  try {
+    await client.connect();
+    const users = client.db("hirePT").collection("chartData").find({});
+    const results = await users.toArray();
+
+    res.status(200).send(results);
+
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({ msg: "error retrieving data" });
+  } finally {
+    await client.close();
+  }
+};
 //seedCoachData();
 //deleteCoach();

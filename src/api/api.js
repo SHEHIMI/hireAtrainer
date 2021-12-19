@@ -73,9 +73,18 @@ const loadCoaches = async () => {
     .catch((err) => err.response);
 };
 
+const retrieveData = async () => {
+  let url = `${baseUrl}/getData`;
+  return await axios
+    .get(url)
+    .then((response) => response)
+    .catch((err) => err.response);
+
+};
+
 const deleteTrainer = async (data) => {
   let url = `${baseUrl}/deleteTrainer`;
-  console.log("EMAIL:" + data);
+
   return await axios
     .post(url, data)
     .then((response) => response)
@@ -86,6 +95,16 @@ const test = async () => {
   let url = `${baseUrl}/test`;
   return await axios
     .get(url)
+    .then((response) => response)
+    .catch((err) => err.response);
+};
+
+const insertCert = async (data) => {
+  let url = `${baseUrl}/addCert`;
+  console.log("cert:" + data);
+
+  return await axios
+    .post(url, data)
     .then((response) => response)
     .catch((err) => err.response);
 };
@@ -101,4 +120,6 @@ export {
   postLoginData,
   VerifyLogin,
   deleteTrainer,
+  insertCert,
+  retrieveData
 };

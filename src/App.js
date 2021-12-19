@@ -14,6 +14,9 @@ import HomeCLient from "./pages/HomeClient";
 import MusicClient from "./pages/MusicClient";
 import TrainerClient from "./pages/TrainersClient";
 import Delete from "./utils/deleteTrainer";
+import ExtAPI from "./pages/NewsApi";
+import UploadCert from "./pages/uploadCerts";
+import Visualize from "./pages/visualizer";
 import { configureStore } from "./redux/store/store";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Provider } from "react-redux";
@@ -57,15 +60,23 @@ function App() {
             <Route path="/HomeClient">
               <HomeCLient />
             </Route>
-
             <Route path="/musicClient">
               <MusicClient />
             </Route>
             <Route path="/TrainerClient">
               <TrainerClient />
             </Route>
+            <Route path="/NewsApi">
+              <ExtAPI />
+            </Route>
+            <Route path="/UploadCert">
+              <UploadCert />
+            </Route>
             <Route path="/deleteTrainer">
               <Delete />
+            </Route>
+            <Route path="/Chart">
+              <Visualize />
             </Route>
             <Route path="/">
               <SignUp />

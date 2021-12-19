@@ -6,8 +6,9 @@ import moh from "../images/mohammadAli.jpg";
 import gym from "../images/gym1.jpg";
 import dumbell from "../images/dumbell.png";
 import quote2 from "../images/quote2.jpg";
-
 import quote from "../images/quote.jpg";
+import Button from "../reusableComponents/Button";
+
 const HomeCLient = () => {
   let history = useHistory();
   useEffect(() => {}, []);
@@ -18,7 +19,9 @@ const HomeCLient = () => {
   const OpenProfile = () => {
     history.push("/GoogleLogout");
   };
-
+  const OpenChart = () => {
+    history.push("/Chart");
+  };
   return (
     <div className="container-fluid" style={{ backgroundImage: `url(${gym})` }}>
       <nav
@@ -136,14 +139,32 @@ const HomeCLient = () => {
             </li>
           </ul>
           <form className="d-flex">
-            <input
-              className="form-control me-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            ></input>
-            <button className="btn btn-outline-success" type="submit">
-              Search
+            <button
+              type="button"
+              onClick={OpenChart}
+              className="btn btn-sm btn-outline-danger"
+              style={{
+                marginTop: "6px",
+                marginRight: "175px",
+                width: "100%",
+                marginBottom: "5px",
+                height: "35px",
+              }}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-graph-up-arrow"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M0 0h1v15h15v1H0V0Zm10 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V4.9l-3.613 4.417a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61L13.445 4H10.5a.5.5 0 0 1-.5-.5Z"
+                />
+              </svg>
+              statistics
             </button>
           </form>
         </div>

@@ -37,6 +37,7 @@ const Trainer = () => {
             <th scope="col">firstname</th>
             <th scope="col">lastname</th>
             <th scope="col">phoneNumber</th>
+            <th scope="col">certificate</th>
             <th scope="col">Contact</th>
           </tr>
         </thead>
@@ -48,6 +49,7 @@ const Trainer = () => {
                   <td>{row.firstname}</td>
                   <td>{row.lastname}</td>
                   <td>{row.phone}</td>
+                  <td>{row.certification}</td>
                   <td>{<a href="https://web.whatsapp.com/">Contact</a>}</td>
                 </tr>
               ))
